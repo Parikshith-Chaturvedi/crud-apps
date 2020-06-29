@@ -4,6 +4,7 @@ import { Booking } from "../booking.model";
 import { NgForm } from "@angular/forms";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,11 +14,12 @@ import { Observable } from 'rxjs';
 })
 export class StudentsComponent implements OnInit {
   bookingData: Observable<any>;
-  typesOfShoes: string[] = ["1PM - 2PM", "2PM - 3PM", "5PM - 6PM"];
+  timings: string[] = ["1PM - 2PM", "2PM - 3PM", "5PM - 6PM"];
 
   constructor(
     private bookingService: BookingService,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
