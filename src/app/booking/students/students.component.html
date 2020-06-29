@@ -1,0 +1,48 @@
+<app-top-nav></app-top-nav>
+<section class="login-page" fxLayout="column" fxLayoutAlign="center center">
+  <form (ngSubmit)="onBookingSubmit(f)" #f>
+    <mat-card fxLayout="column" fxLayoutAlign="center" fxLayoutGap="50px">
+      <mat-card-content>
+        <div fxLayout="row" fxLayoutAlign="center">
+          <h5>Book Slots</h5>
+        </div>
+
+        <mat-grid-list cols="3" rowHeight="2:2">
+          <mat-grid-tile>
+            <button mat-icon-button aria-label="navigation arrow">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+          </mat-grid-tile>
+          <mat-grid-tile *ngFor="let booking of bookingData | async; let i = index">
+            <p>{{booking.dates.seconds * 1000 | date:'MMM d, y'}}</p>
+            <!-- <mat-form-field>
+              <mat-label>Dates</mat-label>
+              <input matInput [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-icon-button aria-label="navigation arrow">
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+        <p>Available Slots:</p>
+        <mat-selection-list #booking [multiple]="false" name="slots" ngModel required>
+          <mat-list-option *ngFor="let booking of bookingData | async">
+            {{booking.slots}}
+          </mat-list-option>
+        </mat-selection-list>
+
+        <!-- <p>
+          Option selected: {{shoes.selectedOptions}}
+        </p> -->
+
+        <button mat-flat-button type="submit" color="primary"> Book Slot</button>
+
+      </mat-card-content>
+    </mat-card>
+  </form>
+</section>

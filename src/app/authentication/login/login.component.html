@@ -1,0 +1,25 @@
+<section class="login-page" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card fxLayout="column" fxLayoutAlign="center" fxLayoutGap="50px">
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutAlign="center">
+        <h5>Log In</h5>
+      </div>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field appearance="fill">
+          <mat-label>User Name</mat-label>
+          <input matInput type="email" placeholder="Enter User Name" name="user" ngModel #emailInput="ngModel" email required>
+          <mat-hint align="end">User Name is registered email</mat-hint>
+          <mat-error *ngIf="emailInput.hasError('required')">Field cannot be empty</mat-error>
+          <mat-error *ngIf="!emailInput.hasError('required')">Invalid user name</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Enter Password" name="password" ngModel #pwInput="ngModel" required minlength="6">
+          <mat-error *ngIf="pwInput.hasError('required')">Field cannot be empty</mat-error>
+        </mat-form-field>
+        <button type="submit" mat-flat-button [disabled]="f.invalid" color="primary">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</section>
