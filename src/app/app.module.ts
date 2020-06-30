@@ -11,11 +11,13 @@ import { LoginComponent } from './authentication/login/login.component';
 import { StudentsComponent } from './booking/students/students.component';
 import { AdminComponent } from './booking/admin/admin.component';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './authentication/auth.service';
 import { TopNavComponent } from './booking/top-nav/top-nav.component';
 import { BookingService } from './booking/booking.service';
+import { AdminLoginComponent } from './authentication/admin-login/admin-login.component';
 
 
 
@@ -26,6 +28,7 @@ import { BookingService } from './booking/booking.service';
     StudentsComponent,
     AdminComponent,
     TopNavComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,

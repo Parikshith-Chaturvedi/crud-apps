@@ -18,10 +18,10 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
-import { MatGridListModule } from "@angular/material/grid-list";
-import { MatTableModule } from "@angular/material/table";
-import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 @NgModule({
   imports: [
@@ -46,8 +46,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatAutocompleteModule,
     MatGridListModule,
     MatTableModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatFormFieldModule,
@@ -71,8 +70,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatAutocompleteModule,
     MatGridListModule,
     MatTableModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
+    MatSlideToggleModule
   ],
 })
 export class MaterialModule {}
