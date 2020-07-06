@@ -1,8 +1,7 @@
 export interface Booking {
   id: string;
-  dates: string;
+  dates: Date;
   booked?: boolean;
-  // slots: string
   slots: Array<any>;
   state?: "booked" | "cancelled" | null;
 }

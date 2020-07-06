@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { BookingService } from "../booking.service";
-import { Booking } from "../booking.model";
 import { NgForm } from "@angular/forms";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { Booking } from "../booking.model";
 
 @Component({
   selector: "app-students",
@@ -12,8 +12,7 @@ import { map } from "rxjs/operators";
   styleUrls: ["./students.component.scss"],
 })
 export class StudentsComponent implements OnInit {
-  bookingData: Observable<any>;
-  availableDates: Observable<any>;
+  bookings: Observable<any>;
 
   constructor(
     private bookingService: BookingService,
@@ -21,7 +20,22 @@ export class StudentsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.bookingData = this.bookingService.getAvailableData();
+    this.bookings = this.db
+      .collection("bookingData")
+      .snapshotChanges()
+      .pipe(
+        map((docArray) => {
+          return docArray.map((doc) => {
+            return {
+              id: doc.payload.doc.id,
+              dates: doc.payload.doc.data()["dates"],
+              slots: doc.payload.doc.data()["slots"],
+              startTime: doc.payload.doc.data()["startTime"],
+              endTime: doc.payload.doc.data()["endtTime"],
+            };
+          });
+        })
+      );
   }
   onBookingSubmit(form: NgForm) {}
 }

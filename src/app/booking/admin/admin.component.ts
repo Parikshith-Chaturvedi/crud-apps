@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Booking } from '../booking.model';
+import { BookingService } from '../booking.service';
 
 export interface PeriodicElement {
   name: string;
@@ -27,10 +30,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AdminComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['name', 'date', 'slots'];
+  dataSource = new MatTableDataSource<Booking>();
 
-  constructor() { }
+  constructor(private bookingService: BookingService) { }
 
   ngOnInit(): void {
   }
